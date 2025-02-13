@@ -1,0 +1,11 @@
+[colors.primary]
+background = "#000000"
+
+[font]
+size = 14
+
+[window]
+opacity = 0.8
+
+[env]
+WINIT_X11_SCALE_FACTOR = "1.4"
