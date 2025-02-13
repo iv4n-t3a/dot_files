@@ -1,0 +1,39 @@
+# white theme by Jacek Lehmann
+# best viewed on shaded or black terminal
+colordef black = 70 70 70
+colordef grey = 300 300 300
+colordef white = 800 800 800
+# colordef white = 500 750 1000
+
+background           = black     black
+frame                = white     black
+window_title         = white     black
+directory            = white     black
+playlist             = white     black
+file                 = white     black
+selected_playlist    = black     white
+selected_directory   = black     white
+selected_file        = black     white
+marked_file          = cyan      grey     bold
+marked_selected_file = black     white     bold
+info                 = white     black
+status               = white     black
+title                = white     black
+state                = white     black
+current_time         = white     black
+time_left            = white     black
+total_time           = white     black
+time_total_frames    = white     black
+sound_parameters     = white     black
+legend               = white     black
+disabled             = black     black
+enabled              = white     black
+empty_mixer_bar      = white     black
+filled_mixer_bar     = white     grey
+empty_time_bar       = white     black
+filled_time_bar      = white     grey
+entry                = white     black
+entry_title          = white     black
+error                = white     black
+message              = white     black
+plist_time           = white     black

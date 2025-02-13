@@ -1,0 +1,316 @@
+# preprocessor's dircetives
+
+snippet #i "#include" bA
+#include <$1>
+$0
+endsnippet
+
+snippet #l "#include" bA
+#include "$1"
+$0
+endsnippet
+
+snippet #d "#define" bA
+#define $0
+endsnippet
+
+snippet #ifd "#ifdef" bA
+#ifdef $0
+endsnippet
+
+snippet #ifn "#ifndef" bA
+#ifndef $0
+endsnippet
+
+snippet #e "#endif" bA
+#endif
+endsnippet
+
+snippet #pd	"Recursive include protection" bA
+#ifndef $1
+#define $1
+
+$0
+
+#endif // #ifndef $1
+endsnippet
+
+# main
+
+snippet main "main func" b
+int main() {
+  $0
+}
+endsnippet
+
+snippet argmain "main with args" b
+int main(int argc, char** argv) {
+  $0
+}
+endsnippet
+
+# control expressions
+
+snippet whl "while loop" b
+while ($1) {
+  $2
+}$0
+endsnippet
+
+snippet for "for loop" b
+for ($1) {
+  $2
+}$0
+endsnippet
+
+snippet fori "for loop" b
+for (size_t $1 = 0; $1 < $2; ++$1) {
+  $3
+}$0
+endsnippet
+
+snippet forc "loop for alphabet" b
+for (size_t $1 = 'a'; $1 <= 'z'; ++$1) {
+  $2
+}$0
+endsnippet
+
+snippet if "if statement" b
+if ($1) {
+  $2
+}$0
+endsnippet
+
+snippet else "else statement"
+else {
+  $1
+}$0
+endsnippet
+
+snippet elif "else if statement"
+else if ($1) {
+  $2
+}$0
+endsnippet
+
+snippet cls "class declaration" b
+class $1 {
+  $0
+};
+endsnippet
+
+snippet sct "class declaration" b
+struct $1 {
+  $0
+};
+endsnippet
+
+snippet lmd
+[$1]($2){$3};$0
+endsnippet
+
+snippet ret "return" b
+return`!p if t[1] and t[1][0] != ';' and t[1][0] != ' ':
+	snip.rv = ' '
+else:
+	snip.rv = ''`$1
+endsnippet
+
+snippet cont "continue" b
+continue;
+endsnippet
+
+# input - output
+
+snippet cin "in" b
+std::cin >> $0
+endsnippet
+
+snippet cout "out" b
+std::cout << $1
+endsnippet
+
+priority 10
+snippet endl "endl"
+std::endl
+endsnippet
+
+priority 100
+snippet endl "endl" b
+std::cout << std::endl;
+$0
+endsnippet
+
+snippet fastin
+std::ios_base::sync_with_stdio(false);
+std::cin.tie(nullptr);
+endsnippet
+
+# access modifyers
+
+snippet pub: "public" bA
+public:
+  $0
+endsnippet
+
+snippet pro: "protected" bA
+protected:
+  $0
+endsnippet
+
+snippet pri: "private" bA
+private:
+  $0
+endsnippet
+
+# limits
+
+snippet lmin "type min"
+std::numeric_limits<$1>::min()$0
+endsnippet
+
+snippet lmax "type max"
+std::numeric_limits<$1>::max()$0
+endsnippet
+
+# types
+
+snippet *8 "int8_t" wA
+int8_t $0
+endsnippet
+
+snippet *16 "int16_t" wA
+int16_t $0
+endsnippet
+
+snippet *32 "int32_t" wA
+int32_t $0
+endsnippet
+
+snippet *64 "int64_t" wA
+int64_t $0
+endsnippet
+
+snippet *128 "int128_t" wA
+__int128 $0
+endsnippet
+
+snippet !8 "uint8_t" wA
+uint8_t $0
+endsnippet
+
+snippet !16 "uint16_t" wA
+uint16_t $0
+endsnippet
+
+snippet !32 "uint32_t" wA
+uint32_t $0
+endsnippet
+
+snippet !64 "uint64_t" wA
+uint64_t $0
+endsnippet
+
+snippet !128 "uint128_t" wA
+__uint128 $0
+endsnippet
+
+snippet st "size_t"
+size_t $0
+endsnippet
+
+snippet pair
+std::pair<$1> $0
+endsnippet
+
+snippet tup
+std::tupple<$1> $0
+endsnippet
+
+snippet arr
+std::array<$1> $0
+endsnippet
+
+snippet vec
+std::vector<$1> $0
+endsnippet
+
+snippet fdlst
+std::forward_list<$1> $0
+endsnippet
+
+snippet map
+std::map<$1> $0
+endsnippet
+
+snippet umap
+std::unordered_map<$1> $0
+endsnippet
+
+snippet set
+std::set<$1> $0
+endsnippet
+
+snippet uset
+std::unordered_set<$1> $0
+endsnippet
+
+snippet mset
+std::multiset<$1> $0
+endsnippet
+
+snippet stk
+std::stack<$1> $0
+endsnippet
+
+snippet que
+std::queue<$1> $0
+endsnippet
+
+snippet dqu
+std::deque<$1> $0
+endsnippet
+
+snippet shrdp "std::shared_ptr"
+std::shared_ptr<$1> $0
+endsnippet
+
+snippet unqp "std::unique_ptr"
+std::unique_ptr<$1> $0
+endsnippet
+
+snippet wkp "std::weak_ptr"
+std::weak_ptr<$1> $0
+endsnippet
+
+# functions
+
+snippet mkshd "make_shared"
+std::make_shared($1);
+$0
+endsnippet
+
+snippet mkunq "make_unique"
+std::make_unique($1);
+$0
+endsnippet
+
+snippet mkwk "make_unique"
+std::make_weak($1);
+$0
+endsnippet
+
+snippet mkpr "make_pair"
+std::make_pair($1);
+$0
+endsnippet
+
+snippet srt "srt"
+std::sort($1);
+$0
+endsnippet
+
+snippet srti "srt"
+std::sort($1.begin(), $1.end());
+$0
+endsnippet

@@ -1,0 +1,198 @@
+" source /etc/nvim/colors/termschool.vim
+" source ~/.local/share/nvim/plugged/awesome-vim-colorschemes/colors/termschool.vim
+" source ~/.local/share/nvim/plugged/awesome-vim-colorschemes/colors/happy_hacking.vim
+source ~/.local/share/nvim/plugged/awesome-vim-colorschemes/colors/focuspoint.vim
+" source lua/nui.lua
+
+:set encoding=UTF-8
+:set number
+:set relativenumber
+:set autoindent
+:set tabstop=4
+:set shiftwidth=4
+:set smarttab
+:set softtabstop=4
+:set exrc
+:set expandtab
+:set mouse=a
+:set noswapfile
+" :set cursorline
+" :set cursorcolumn
+
+autocmd Filetype cpp,h,hpp  setlocal expandtab   tabstop=2 softtabstop=2 shiftwidth=2
+autocmd Filetype tex        setlocal expandtab   tabstop=2 softtabstop=2 shiftwidth=2
+autocmd Filetype html       setlocal expandtab   tabstop=2 softtabstop=2 shiftwidth=2
+autocmd Filetype c          setlocal noexpandtab tabstop=8 softtabstop=8 shiftwidth=8
+autocmd Filetype Makefile   setlocal noexpandtab
+" autocmd Filetype asm        setlocal noexpandtab tabstop=8 softtabstop=8 shiftwidth=8
+
+autocmd BufWritePost * TrailerTrim
+
+command M terminal ! bash ~/Scripts/make.sh %
+
+autocmd Filetype c               command! R terminal gcc -g -Wall -Wextra -Wpedantic -std=c++20 -O2 % && ./a.out; rm a.out
+autocmd Filetype cpp             command! R terminal g++ -g -Wall -Wextra -Wpedantic -std=c++20 -O2 % && ./a.out; rm a.out
+autocmd Filetype java            command! R terminal java %
+autocmd Filetype sh              command! R terminal ./%
+autocmd Filetype markdown        command! R terminal zaread %
+autocmd Filetype python          command! R terminal python3 %
+autocmd Filetype javascript      command! R terminal node %
+autocmd Filetype asm             command! R terminal nasm -f elf % && ld -m elf_i386 -s -o $(basename -s .asm %) $(basename -s .asm %).o && ./$(basename -s .asm %)
+autocmd Filetype rust            command! R terminal rustc -o a.out % && ./a.out; rm a.out
+autocmd Filetype go              command! R terminal go run %
+autocmd Filetype tex             command! R :CocCommand latex.Build
+" autocmd Filetype tex             command! R VimtexCompile
+
+autocmd Filetype cpp    set colorcolumn=80
+autocmd Filetype python set colorcolumn=80
+highlight ColorColumn ctermbg=235
+
+autocmd VimEnter * Tagbar <CR>
+
+" latex
+" let g:tex_flavor='latex'
+" let g:vimtex_view_method='zathura'
+" let g:vimtex_quickfix_mode=0
+" let g:tex_conceal='abdmg'
+" set conceallevel=0
+
+" delimitMate
+let g:delimitMate_autoclose = 1
+let g:delimitMate_jump_expansion = 1
+let g:delimitMate_expand_space = 1
+let g:delimitMate_expand_cr = 2
+let g:delimitMate_expand_inside_quotes = 0
+autocmd Filetype tex let g:delimitMate_autoclose = 0
+
+" NERDTree
+let NERDTreeMapOpenInTab='<TAB>'
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+autocmd BufWinEnter * if &buftype != 'quickfix' && getcmdwintype() == '' | silent NERDTreeMirror | endif
+
+" spell
+" setlocal spell
+" set spelllang=nl,en_gb,ru
+" inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+
+" coc
+let g:coc_disable_startup_warning = 1
+" let g:loaded_python3_provider = 0
+" inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+
+" Mappings
+
+nnoremap <space>f <cmd>Telescope find_files<cr>
+nnoremap <space>g <cmd>Telescope live_grep<cr>
+nnoremap <space>b <cmd>Telescope buffers<cr>
+nnoremap <space>h <cmd>Telescope help_tags<cr>
+
+noremap z :w <CR> :R <CR>
+noremap q :q <CR>
+noremap n :NERDTreeFocus <CR>
+noremap t :TagbarOpenAutoClose <CR>
+noremap , :w <CR>
+nnoremap <S-J> :tabnext<CR>
+nnoremap <S-K> :tabprevious<CR>
+
+inoremap <silent><expr> <S-TAB>
+      \ coc#pum#visible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ CheckBackspace() ? "\<S-TAB>" :
+      \ coc#refresh()
+
+let g:coc_snippet_next = '<tab>'
+
+" Use <c-space> to trigger completion
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nnoremap <silent> K :call ShowDocumentation()<CR>
+nmap <space>r <Plug>(coc-rename)
+xmap F  <Plug>(coc-format-selected)
+nmap F  <Plug>(coc-format-selected)
+xmap f  <Plug>(coc-format)
+nmap f  <Plug>(coc-format)
+
+nmap <space>i      :CocCommand document.toggleInlayHint<CR>
+
+call plug#begin()
+Plug 'vim-airline/vim-airline'
+Plug 'ap/vim-css-color'
+Plug 'rafi/awesome-vim-colorschemes'
+Plug 'tpope/vim-surround'
+Plug 'https://tpope.io/vim/commentary.git'
+Plug 'csexton/trailertrash.vim'
+Plug 'mg979/vim-visual-multi'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'akinsho/git-conflict.nvim'
+Plug 'ryanoasis/vim-devicons'
+Plug 'preservim/nerdtree'
+Plug 'preservim/tagbar'
+Plug 'Raimondi/delimitMate'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+" Plug 'lervag/vimtex'
+" Plug 'iamcco/markdown-preview.nvim'
+" Plug 'AndrewRadev/tagalong.vim'
+" Plug 'rcarriga/nvim-notify'
+" Plug 'soramugi/auto-ctags.vim.git'
+" Plug 'folke/noice.nvim'
+" Plug 'MunifTanjim/nui.nvim'
+" Plug 'j-hui/fidget.nvim'
+" Plug 'vim-autoformat/vim-autoformat'
+" Plug 'mattn/emmet-vim'
+" Plug 'SirVer/ultisnips'
+" Plug 'ggandor/leap.nvim'
+" Plug 'nvim-java/nvim-java'
+" Plug 'terryma/vim-multiple-cursors'
+" Plug 'tpope/vim-fugitive'
+" Plug 'sakhnik/nvim-gdb'
+" Plug 'thinca/vim-quickrun'
+" Plug 'tc50cal/vim-terminal'
+" Plug 'thinca/vim-localrc'
+call plug#end()
+
+" ctags
+" let g:auto_ctags_tags_args = ['--tag-relative=yes', '--recurse=yes', '--sort=yes']
+" let g:auto_ctags_filetype_mode = 1
+" let g:auto_ctags_set_tags_option = 1
+" let g:auto_ctags_warn_once = 0
+" let g:auto_ctags_warn_msgs = 0
+" let g:auto_ctags_directory_list = ['/tmp']
+" autocmd Filetype asm,h,c,hpp,cpp,py,java let g:auto_ctags = 1
+
+
+" emmet-vim
+" let g:user_emmet_install_global = 0
+" autocmd FileType html,css EmmetInstall
+" let g:user_emmet_leader_key='<C-Y>'
+
+" snips
+" let g:UltiSnipsExpandTrigger = '<tab>'
+" let g:UltiSnipsJumpForwardTrigger = '<tab>'
+" let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'

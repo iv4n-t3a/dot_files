@@ -1,0 +1,39 @@
+# green theme by Jacek Lehmann
+# best viewed on shaded or black terminal
+colordef black = 70 70 70
+colordef grey = 150 150 150
+colordef cyan = 1000 1000 1000
+colordef green = 500 750 1000
+
+background           = black     black
+frame                = green     black
+window_title         = green	 black
+directory            = green     black
+selected_directory   = cyan      grey
+playlist             = green     black
+selected_playlist    = cyan      grey
+file                 = green     black
+selected_file        = cyan      grey
+marked_file          = cyan      black    bold
+marked_selected_file = cyan      grey     bold
+info                 = green     black
+status               = green     black
+title                = green     black
+state                = green     black
+current_time         = green     black
+time_left            = green     black
+total_time           = green     black
+time_total_frames	 = green     black
+sound_parameters     = green     black
+legend               = green     black
+disabled             = black     black
+enabled              = green     black
+empty_mixer_bar      = green     black
+filled_mixer_bar     = green     grey
+empty_time_bar       = green     black
+filled_time_bar      = green     grey
+entry                = green     black
+entry_title          = green     black
+error                = green     black
+message              = green     black
+plist_time           = green     black

@@ -1,0 +1,457 @@
+# formuls
+
+
+global !p
+def space(t, snip, i):
+  if t[i] and t[i][0] not in [',', '.', '?', ' ', ')', '}', ']', '(', '{', '\\', '[']:
+    snip.rv = ' '
+  else:
+    snip.rv = ''
+
+def spacen(t, snip, i):
+  if t[i] and t[i][0] not in [',', '.', '?', ' ', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', ')', '}', ']', '(', '{', '\\', '[']:
+    snip.rv = ' '
+  else:
+    snip.rv = ''
+endglobal
+
+snippet $$ "Inline math" wA
+$ ${1} $`!p space(t, snip, 2)`$2
+endsnippet
+
+snippet ## "Math env" bA
+\[ $1 .\]$0
+endsnippet
+
+snippet @@ "Math env" bA
+\[
+	$1
+.\]$0
+endsnippet
+
+snippet nxt "consequention" b
+.\] \[ \Downarrow \] \[
+$0
+endsnippet
+
+# enviroments
+
+snippet beg "begin{} \ end{}" b
+\begin{$1}
+  $0
+\end{$1}
+endsnippet
+
+snippet es "exersise enviroment" b
+\begin{exersise}
+  $0
+\end{exersise}
+endsnippet
+
+snippet aggr "aggregation" b
+\left[
+\begin{aligned}
+  $0
+\end{aligned}
+\right.
+endsnippet
+
+snippet cases "cases" b
+\begin{cases}
+  $0
+\end{cases}
+endsnippet
+
+snippet it "itemize" b
+\begin{itemize}
+  $0
+\end{itemize}
+endsnippet
+
+snippet enum "enumeration" b
+\begin{enumerate}
+  $0
+\end{enumerate}
+endsnippet
+
+snippet st "statement" b
+\begin{statement}
+  $0.
+\end{statement}
+endsnippet
+
+snippet _st "statement_" b
+\begin{statement_}
+  $0.
+\end{statement_}
+endsnippet
+
+snippet th "theorem" b
+\begin{theorem}
+  $0.
+\end{theorem}
+endsnippet
+
+snippet _th "theorem_" b
+\begin{theorem_}[$1]
+  $0.
+\end{theorem_}
+endsnippet
+
+snippet nt "note" b
+\begin{note}
+  $0.
+\end{note}
+endsnippet
+
+snippet lem "lemma" b
+\begin{lemma}
+  $0.
+\end{lemma}
+endsnippet
+
+snippet _lem "lemma" b
+\begin{lemma}[$1]
+  $0.
+\end{lemma}
+endsnippet
+
+snippet pf "proof" b
+\begin{proof}
+  $0
+\end{proof}
+endsnippet
+
+snippet _pf "proof_" b
+\begin{proof}[$1]
+  $0
+\end{proof}
+endsnippet
+
+snippet def "definition" b
+\begin{definition}
+  $0.
+\end{definition}
+endsnippet
+
+snippet _def "definition_" b
+\begin{definition_}
+  $0.
+\end{definition_}
+endsnippet
+
+snippet cl "corollary" b
+\begin{corollary}
+  $0.
+\end{corollary}
+endsnippet
+
+snippet _cl "corollary_" b
+\begin{corollary_}
+  $0.
+\end{corollary_}
+endsnippet
+
+snippet code "code" b
+\begin{lstlisting}[mathescape=true]
+  $0
+\end{lstlisting}
+endsnippet
+
+# brackets
+
+snippet 's\{' "auto subscript" wrA
+\\{ $1 \\} $0
+endsnippet
+
+snippet 'b\(' "auto subscript" wrA
+\left( $1 \right) $0
+endsnippet
+
+snippet 'b\[' "auto subscript" wrA
+\left[ $1 \right] $0
+endsnippet
+
+snippet 'b\|' "auto subscript" wrA
+\left| $1 \right| $0
+endsnippet
+
+snippet 'b\{' "auto subscript" wrA
+\left\\{ $1 \right\\} $0
+endsnippet
+
+# fractions
+
+snippet // "Fraction" wA
+\\frac{$1}{$2}$0
+endsnippet
+
+snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "Fraction" wrA
+\\frac{`!p snip.rv = match.group(1)`}{$1}$0
+endsnippet
+
+priority 1000
+snippet '^.*\)/' "() Fraction" wrA
+`!p
+stripped = match.string[:-1]
+depth = 0
+i = len(stripped) - 1
+while True:
+	if stripped[i] == ')': depth += 1
+	if stripped[i] == '(': depth -= 1
+	if depth == 0: break;
+	i -= 1
+snip.rv = stripped[0:i] + "\\frac{" + stripped[i+1:-1] + "}"
+`{$1}$0
+endsnippet
+
+# functions
+
+snippet secn "auto subscript" b
+\section{$1}
+
+$0
+endsnippet
+
+snippet subsecn "auto subscript" b
+\subsection{$1}
+
+$0
+endsnippet
+
+snippet subsubsecn "auto subscript" b
+\subsubsection{$1}
+
+$0
+endsnippet
+
+snippet sec "auto subscript" b
+\section*{$1}
+
+$0
+endsnippet
+
+snippet subsec "auto subscript" b
+\subsection*{$1}
+
+$0
+endsnippet
+
+snippet subsubsec "auto subscript" b
+\subsubsection*{$1}
+
+$0
+endsnippet
+
+snippet 'sin' "auto subscript" wr
+\sin{$1}$0
+endsnippet
+
+snippet 'cos' "auto subscript" wr
+\cos{$1}$0
+endsnippet
+
+snippet 'tg' "auto subscript" wr
+\tg{$1}$0
+endsnippet
+
+snippet 'ctg' "auto subscript" wr
+\ctg{$1}$0
+endsnippet
+
+snippet img "image" b
+\includegraphics[width=1 \textwidth]{$1}$0
+endsnippet
+
+# limits
+
+# priority 100
+# snippet "([A-Za-z])flim" "function limit" riA
+# \lim\limits_{`!p snip.rv = match.group(1)` \to $1} $0
+# endsnippet
+
+# priority 100
+# snippet "([A-Za-z])ulim" "up limit" riA
+# \overline{\lim}\limits_{`!p snip.rv = match.group(1)` \to \infty} $0
+# endsnippet
+
+# priority 100
+# snippet "([A-Za-z])dlim" "down limit" riA
+# \underline{\lim}\limits_{`!p snip.rv = match.group(1)` \to \infty} $0
+# endsnippet
+
+# priority 100
+# snippet "([A-Za-z])rlim" "right limit" riA
+# \underline{\lim}\limits_{`!p snip.rv = match.group(1)` \to $1 + 0} $0
+# endsnippet
+
+# priority 100
+# snippet "([A-Za-z])llim" "left limit" riA
+# \underline{\lim}\limits_{`!p snip.rv = match.group(1)` \to $1 - 0} $0
+# endsnippet
+
+# priority 10
+# snippet "([A-Za-z])lim" "sequence limit" riA
+# \lim\limits_{`!p snip.rv = match.group(1)` \to \infty} $0
+# endsnippet
+
+# # indexes
+
+snippet '([A-Za-z])([0-9])' "auto subscript" wrA
+`!p snip.rv = match.group(1)`_`!p snip.rv = match.group(2)`$0
+endsnippet
+
+snippet '([A-Za-z])_([a-zA-Z0-9][a-zA-Z0-9])' "auto subscript2" wrA
+`!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2)`}$0
+endsnippet
+
+# snippet '([A-Za-z])\*([a-zA-Z0-9])' "auto subscript" wrA
+# `!p snip.rv = match.group(1)`^`!p snip.rv = match.group(2)`$0
+# endsnippet
+
+# snippet '([A-Za-z])\^([a-zA-Z0-9][a-zA-Z0-9])' "auto subscript2" wrA
+# `!p snip.rv = match.group(1)`^{`!p snip.rv = match.group(2)`}$0
+# endsnippet
+
+# snippet .. "superscript" iA
+# _{$1}$0
+# endsnippet
+
+# snippet ** "superscript" iA
+# ^{$1}$0
+# endsnippet
+
+# # arrows
+
+snippet h> "Hrarrow" w
+\hrarrow $0
+endsnippet
+
+snippet > "Rarrow" w
+\Rightarrow $0
+endsnippet
+
+snippet < "Rarrow" w
+\Leftrarrow $0
+endsnippet
+
+# # quantors
+
+snippet fl "forall" w
+\forall $0
+endsnippet
+
+snippet ex "exists" w
+\exists $0
+endsnippet
+
+snippet ex! "exists" w
+\exists! $0
+endsnippet
+
+snippet main w
+\documentclass[a5paper, 10pt]{article}
+
+\usepackage[english, russian]{babel}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amsfonts, amssymb, amsthm, mathtools}
+\usepackage{listings}
+\usepackage{geometry}
+
+\geometry{left=10mm}
+\geometry{right=10mm}
+\geometry{top=10mm}
+\geometry{bottom=10mm}
+
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\pagenumbering{gobble}
+\author{$1}
+\date{$2}
+\title{$3}
+
+\linespread{1.4}
+\selectfont
+
+\maketitle
+\newpage
+
+$0
+
+\end{document}
+endsnippet
+
+# # bars, overlines and vectors
+
+# priority 10
+# snippet "--" "bar" riA
+# \overline{$1}$0
+# endsnippet
+
+# priority 100
+# snippet "(\\?\w+)--" "bar" riA
+# \overline{`!p snip.rv=match.group(1)`}$0
+# endsnippet
+
+# priority 10
+# snippet "\^\^" "hat" riA
+# \hat{$1}$0
+# endsnippet
+
+# priority 100
+# snippet "(\\?\w+)\^\^" "hat" riA
+# \hat{`!p snip.rv=match.group(1)`}
+# endsnippet
+
+# priority 10
+# snippet "\~\~" "tilde" riA
+# \widetilde{$1}$0
+# endsnippet
+
+# priority 100
+# snippet "(\\?\w+)\~\~" "til" riA
+# \widetilde{`!p snip.rv=match.group(1)`}$0
+# endsnippet
+
+# priority 10
+# snippet '\'\'' "auto subscript" wrA
+# \vec{$1}$0
+# endsnippet
+
+# priority 100
+# snippet "(\\?\w+)\'\'" "Vector postfix" riA
+# \vec{`!p snip.rv=match.group(1)`}$0
+# endsnippet
+
+# # sequences
+
+# priority 10
+# snippet "seq([a-zA-Z])" "sequence" riA
+# \left\\{ $1 \right\\}_{`!p snip.rv=match.group(1)` = 1}^{\infty}$0
+# endsnippet
+
+# priority 100
+# snippet "([a-zA-Z])seq([a-zA-Z])" "sequence" riA
+# \left\\{`!p snip.rv=match.group(1)`_`!p snip.rv = match.group(2)` \right\\}_{`!p snip.rv=match.group(2)` = 1}^{\infty}$0
+# endsnippet
+
+# # sums
+
+# priority 10
+# snippet "sum([a-zA-Z])" "sum" riA
+# \sum_{$1 = $2}^{`!p snip.rv = match.group(1)`}$0
+# endsnippet
+
+# priority 100
+# snippet "([a-zA-Z])sum([a-zA-Z])" "sum" riA
+# \sum_{`!p snip.rv=match.group(1)` = 1}^{`!p snip.rv=match.group(2)`}$0
+# endsnippet
+
+# # integral
+
+# snippet "([a-zA-Z0-9][a-zA-Z0-9]*)int([a-zA-Z0-9][a-zA-Z0-9]*)" "int" riA
+# \int\limits_{`!p snip.rv = match.group(1)`}^{`!p snip.rv = match.group(2)`}$0
+# endsnippet

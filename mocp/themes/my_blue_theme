@@ -1,0 +1,39 @@
+# blue theme by Jacek Lehmann
+# best viewed on shaded or black terminal
+colordef black = 70 70 70
+colordef grey = 150 150 150
+colordef cyan = 1000 1000 1000
+colordef blue = 500 750 1000
+
+background           = black     black
+frame                = blue     black
+window_title         = blue	 black
+directory            = blue     black
+selected_directory   = cyan      grey
+playlist             = blue     black
+selected_playlist    = cyan      grey
+file                 = blue     black
+selected_file        = cyan      grey
+marked_file          = cyan      black    bold
+marked_selected_file = cyan      grey     bold
+info                 = blue     black
+status               = blue     black
+title                = blue     black
+state                = blue     black
+current_time         = blue     black
+time_left            = blue     black
+total_time           = blue     black
+time_total_frames	 = blue     black
+sound_parameters     = blue     black
+legend               = blue     black
+disabled             = black     black
+enabled              = blue     black
+empty_mixer_bar      = blue     black
+filled_mixer_bar     = blue     grey
+empty_time_bar       = blue     black
+filled_time_bar      = blue     grey
+entry                = blue     black
+entry_title          = blue     black
+error                = blue     black
+message              = blue     black
+plist_time           = blue     black

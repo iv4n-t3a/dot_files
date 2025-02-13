@@ -1,0 +1,34 @@
+{
+  "languageserver": {
+    "haskell": {
+      "command": "glsl_analyzer",
+      "args": [
+      ],
+      "rootPatterns": [
+        ".git"
+      ],
+      "filetypes": [
+        "vert",
+        "tesc",
+        "tese",
+        "geom",
+        "frag",
+        "comp",
+        "glsl"
+      ],
+      "settings": {
+        "haskell": {
+          "checkParents": "CheckOnSave",
+          "checkProject": true,
+          "maxCompletions": 40,
+          "formattingProvider": "",
+          "plugin": {
+            "stan": {
+              "globalOn": true
+            }
+          }
+        }
+      }
+    }
+  }
+}
