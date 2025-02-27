@@ -107,6 +107,7 @@ vim.api.nvim_set_keymap('n', 'f', '<Plug>(coc-format)', {noremap = true, silent 
 vim.api.nvim_set_keymap('n', 'F', '<Plug>(coc-format-selected)', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<space>r', '<Plug>(coc-rename)', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<space>i', ':CocCommand document.toggleInlayHint<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<space><tab>', ':CocCommand clangd.switchSourceHeader<CR>', {noremap = true, silent = true})
 vim.g.coc_snippet_next = '<tab>'
 
 function _G.check_back_space()
