@@ -42,20 +42,37 @@ require('packer').startup(function(use)
   use { 'neoclide/coc.nvim', branch = 'release' }
   use 'MarcHamamji/runner.nvim'
   use 'zbirenbaum/copilot.lua'
+  use 'OXY2DEV/markview.nvim'
   use 'olimorris/codecompanion.nvim'
   use 'nvimdev/dashboard-nvim'
   use 'lewis6991/gitsigns.nvim'
 end)
 
 require('copilot').setup {}
-require('codecompanion').setup {}
 require('aerial').setup {}
 require('runner').setup {}
-
+require('nvim-treesitter').setup {}
 require('nvim-treesitter.configs').setup {
   ensure_installed = {
-    "cpp", "python", "dart", "c", "go", "asm", "latex", "rust", "html", "css",
-    "json", "yaml", "toml" -- configs
+    "cpp", "python", "dart", "c", "go", "asm", "latex", "rust",
+    "html", "css", "markdown", "markdown_inline",
+    "json", "yaml", "toml", "make", "ninja", "nginx", "cmake" -- configs
+  },
+}
+require('markview').setup {
+  preview = {
+    filetypes = {
+      'markdown',
+      'codecompanion'
+    },
+    ignore_buftypes = {},
+  }
+}
+require('codecompanion').setup {
+  display = {
+    chat = {
+      start_in_insert_mode = true,
+    },
   },
 }
 require('lualine').setup {
