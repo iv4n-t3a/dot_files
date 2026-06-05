@@ -1,0 +1,11 @@
+^\.git$
+^\.gitignore$
+^README\.md$
+^Makefile$
+^LICENSE$
+^scripts/
+asserts/
+chadwm/
+chadwm-src/
+\.zsh\.local$
+\.zsh\.local\.example$

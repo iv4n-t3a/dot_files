@@ -1,0 +1,161 @@
+{
+  "modules-left": [
+    "custom/launcher",
+    "sway/workspaces",
+    "sway/mode",
+  ],
+  "modules-center": [
+    "clock",
+    "custom/playerctl",
+  ],
+  "modules-right": [
+    "cpu",
+    "memory",
+    "temperature",
+    "bluetooth",
+    "network",
+    "wireplumber",
+    "sway/language",
+    "battery",
+  ],
+  "layer": "top",
+  "sway/mode": {
+    "format": "󰔡 {}",
+    "tooltip": false
+  },
+  "sway/workspaces": {
+    "disable-scroll": true,
+    "current-only": false
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+        "activated": "󰈈 ",
+        "deactivated": "󰈉 "
+    },
+    "tooltip": false
+  },
+  "temperature": {
+    "hwmon-path": "/sys/class/hwmon/hwmon7/temp1_input",
+    "critical-threshold": 85,
+    "interval": 1,
+    "format": "󰔏 {temperatureC}°C",
+    "tooltip": false,
+  },
+  "backlight": {
+    "format": "󰃠 {percent}%",
+    "on-scroll-up": "brightness.sh --dec",
+    "on-scroll-down": "brightness.sh --inc",
+    "smooth-scrolling-threshold": 5,
+  },
+  "wireplumber": {
+    "scroll-step": 1,
+    "format": "{icon} {volume}%",
+    "format-muted": " ",
+    "format-icons": {
+      "default": ["", "", ""]
+    },
+    "on-scroll-up": "~/.config/sway/soundset-wp.sh 5%+",
+    "on-scroll-down": "~/.config/sway/soundset-wp.sh 5%-",
+    "on-click": "~/.config/sway/soundset-wp-mute.sh",
+    "smooth-scrolling-threshold": 5,
+    "tooltip": false,
+    "on-click-right": "pwvucontrol",
+  },
+  "battery": {
+    "interval": 10,
+    "states": {
+      "warning": 15,
+      "critical": 5
+    },
+    "format": "{icon} {capacity}%",
+    "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂁", "󰂂", "󰁹"],
+    "format-full": "{icon} {capacity}%",
+    "format-charging": "󰂄 {capacity}%",
+    "tooltip": true
+  },
+  "clock": {
+    "interval": 1,
+    "format": "{:%I:%M %p  %A %b %d}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "tooltip": true
+  },
+  "memory": {
+    "interval": 1,
+    "format": "󰘚 {used}G",
+    "states": {
+      "warning": 85,
+    },
+  },
+  "cpu": {
+    "interval": 1,
+    "format": "󰍛 {usage}%"
+  },
+  "cpu#2": {
+    "interval": 1,
+    "format": " {load}",
+    "tooltip": false
+  },
+  "bluetooth": {
+    "format-disabled": "",
+    "format-connected": "󰂯 {device_alias}",
+    "format-off": "",
+    "format-on": "󰂯",
+    "on-click-right": "exec blueman-manager"
+  },
+  "network": {
+    "interval": 1,
+    "format-wifi": "󰒢 {essid}",
+    "format-ethernet": "󰈀  {ifname}",
+    "format-linked": "󰒢 {essid} (No IP)",
+    "format-disconnected": "󰒢 Disconnected",
+    "format-alt": "{ifname}",
+    "tooltip": false,
+    "on-click-right": "exec alacritty -e nmtui"
+  },
+  "custom/off": {
+    "format": "",
+    "on-click": "powermenu.sh",
+    "tooltip": false
+  },
+  "tray": {
+    "icon-size": 21,
+    "spacing": 10
+  },
+  "custom/playerctl": {
+    "format": "<span font='10' rise='-1000'>󰎈</span>  {} ",
+    "format-icons": {
+      "Playing": "󰐊",
+      "Paused": "󰏤",
+    },
+    "escape": true,
+    "return-type": "json",
+    "max-length": 40,
+    "on-click": "playerctl play-pause",
+    "on-click-right": "playerctl stop",
+      "on-click-middle": "killall sublime-music",
+    "smooth-scrolling-threshold": 10,
+    "on-scroll-up": "playerctl next",
+    "on-scroll-down": "playerctl previous",
+    "exec": "playerctl -a metadata --format '{\"text\": \"{{markup_escape(title)}} - {{artist}}\", \"tooltip\": \"{{status}} : {{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+  },
+  "custom/playerctltest": {
+    "format": "{}",
+    "return-type": "json",
+    "max-length": 40,
+    "exec": "$HOME/.config/waybar/scripts/mediaplayer.py 2> /dev/null",
+    "on-click": "playerctl play-pause",
+    "on-right-click": "notify-send media",
+    "on-scroll-up": "playerctl position 3+",
+    "on-scroll-down": "playerctl position 3-"
+  },
+  "keyboard-state": {
+    "numlock": true,
+    "capslock": true,
+    "format": "{name} {icon}",
+    "format-icons": {
+      "locked": "",
+      "unlocked": ""
+    }
+  }
+}
