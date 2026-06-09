@@ -17,13 +17,23 @@
 | waybar | `~/.config/waybar/` |
 | zsh | `~/.zshrc` |
 
-## Usage
+## Fresh Fedora Sway Spin install
+
+**Prerequisites:** `curl` (pre-installed on Fedora Sway Spin)
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/iv4n-t3a/dot_files/refs/heads/main/install/fedora_sway_spin/install.sh | bash
+```
+
+The script clones this repo to `~/dot_files`, installs dependencies, sets up the private config repo (VPN etc.), and stows all dotfiles.
+
+## Manual usage
 
 **Prerequisites:** `git`, `stow`
 
 ```sh
-git clone <repo-url> ~/dotfiles
-cd ~/dotfiles
+git clone https://github.com/iv4n-t3a/dot_files ~/dot_files
+cd ~/dot_files
 ```
 
 If you have existing configs, remove or back them up first:

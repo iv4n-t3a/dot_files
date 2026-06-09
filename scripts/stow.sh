@@ -7,7 +7,7 @@ cd "$DOTFILES_DIR"
 action="${1:-stow}"
 shift 2 || true
 
-packages=(alacritty dunst flameshot moc nvim rofi sway vifm waybar zsh)
+packages=(alacritty dunst flameshot moc nvim rofi sway vifm waybar zsh wallpapers)
 
 case "$action" in
   stow)

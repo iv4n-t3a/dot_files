@@ -192,6 +192,7 @@ command -v lsd &>/dev/null && alias ls=lsd
 ### User config
 
 export PATH="$PATH:$HOME/.local/bin"
+export EDITOR=nvim
 
 command -v zoxide &>/dev/null && eval "$(zoxide init zsh)"
 
