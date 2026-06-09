@@ -13,7 +13,7 @@ set $menu rofi -show drun
 
 ### Output configuration
 
-output * bg $HOME/Wallpapers/darkest\ hour.jpg fill
+output * bg $HOME/.wallpapers/darkest\ hour.jpg fill
 
 ### Gaps
 
@@ -72,7 +72,7 @@ focus_follows_mouse yes
     bindsym --to-code $mod+Shift+b exec firefox
     bindsym --to-code $mod+Shift+t exec flatpak run org.telegram.desktop
 
-    bindsym --to-code $mod+Shift+s exec QT_SCALE_FACTOR=1 $HOME/bin/flameshot gui
+    bindsym --to-code $mod+Shift+s exec flameshot gui
 
     bindsym --to-code $mod+comma exec timeout 1 pass show $(zenity --entry --text passname --title passname) -q
     bindsym --to-code $mod+m exec pass show --clip $(zenity --entry --text passname --title passname)

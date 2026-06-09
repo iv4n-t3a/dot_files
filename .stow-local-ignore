@@ -7,5 +7,6 @@
 asserts/
 chadwm/
 chadwm-src/
+install/
 \.zsh\.local$
 \.zsh\.local\.example$

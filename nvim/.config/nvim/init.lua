@@ -122,8 +122,6 @@ vim.keymap.set('n', '<space>t', ':AerialOpen<CR>', { noremap = true, silent = tr
 vim.keymap.set('n', 't', ':AerialNavOpen<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<S-J>', ':tabnext<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<S-K>', ':tabprevious<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', 'z', ':w', { noremap = true, silent = true, callback = require('runner').run })
-vim.keymap.set('n', 'cd', require('telescope').extensions.zoxide.list)
 
 -- Telescope
 vim.keymap.set('n', '<space>f', '<cmd>Telescope find_files<cr>', { noremap = true, silent = true })

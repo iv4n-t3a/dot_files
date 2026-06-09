@@ -19,9 +19,6 @@ family = "JetBrainsMono Nerd Font"
 [window]
 opacity = 0.95
 
-[env]
-WINIT_X11_SCALE_FACTOR = "1.8"
-
 [[keyboard.bindings]]
 key = "Return"
 mods = "Shift"

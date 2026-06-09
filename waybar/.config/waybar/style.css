@@ -42,6 +42,7 @@ window > box {
   padding-bottom: 6px;
   padding-left: 8px;
   padding-right: 8px;
+  color: rgb(181, 232, 224);
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
