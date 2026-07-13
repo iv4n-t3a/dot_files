@@ -3,7 +3,7 @@ set -eo pipefail
 
 # --- configuration ---
 PROJECTS_DIR="$HOME/.dot_files"
-REPO_URL="https://github.com/iv4n-t3a/dot_files.git"
+REPO_URL="https://gt.eine-biene.com/iv4n-t3a/dot_files"
 export DOTFILES_DIR="${DOTFILES_DIR:-$PROJECTS_DIR/dot_files}"
 export DOTFILES_PRIVATE_DIR="${DOTFILES_PRIVATE_DIR:-$PROJECTS_DIR/dot_files_private}"
 # ---

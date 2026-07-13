@@ -25,6 +25,10 @@
 curl -fsSL https://raw.githubusercontent.com/iv4n-t3a/dot_files/refs/heads/main/install/fedora_sway_spin/install.sh | bash
 ```
 
+```sh
+curl -fsSL https://gt.eine-biene.com/iv4n-t3a/dot_files/raw/branch/main/install/fedora_sway_spin/install.sh | bash
+```
+
 The script clones this repo to `~/dot_files`, installs dependencies, sets up the private config repo (VPN etc.), and stows all dotfiles.
 
 ## Manual usage
