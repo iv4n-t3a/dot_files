@@ -3,6 +3,7 @@ set -euo pipefail
 
 PACKAGES=(
     # tools
+    stow
     git
     gh
     inotify-tools
@@ -10,6 +11,7 @@ PACKAGES=(
     flatpak
     openssl
     efitools
+    zoxide
 
     # my-de
     alacritty

@@ -37,6 +37,7 @@ require('packer').startup(function(use)
   use { 'neoclide/coc.nvim', branch = 'release' }
   use 'OXY2DEV/markview.nvim'
   use 'lewis6991/gitsigns.nvim'
+  use 'aruyu/nvim-indentconfig'
 
   -- device-specific plugins (see local-plugins.lua.example)
   pcall(function() require('local-plugins')(use) end)
