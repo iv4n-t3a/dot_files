@@ -12,6 +12,7 @@ PACKAGES=(
     openssl
     efitools
     zoxide
+    pass
 
     # my-de
     alacritty
