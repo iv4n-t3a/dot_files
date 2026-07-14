@@ -40,6 +40,10 @@ PACKAGES=(
     python3-numpy
     python3-torch
     python3-pandas
+
+    # multimedia
+    gstreamer1-plugin-openh264
+    mozilla-openh264
 )
 
 sudo dnf install -y dnf5-plugins
