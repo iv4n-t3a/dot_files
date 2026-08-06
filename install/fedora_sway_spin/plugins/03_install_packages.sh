@@ -26,6 +26,7 @@ PACKAGES=(
     zathura-pdf-mupdf
     feh
     gparted
+    moc
 
     # dev
     clang
@@ -46,6 +47,7 @@ PACKAGES=(
     mozilla-openh264
 )
 
+sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
 sudo dnf install -y dnf5-plugins
 sudo dnf config-manager addrepo --from-repofile=https://cli.github.com/packages/rpm/gh-cli.repo --overwrite # idempotency
 sudo dnf install -y "${PACKAGES[@]}"

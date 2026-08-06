@@ -91,7 +91,7 @@ import_private_data() {
                     exit 1
                 fi
                 echo "Importing $p2..."
-                gpg --import "$mount/$p2"
+                gpg --import-ownertrust "$mount/$p2"
                 ;;
             tar)
                 if [[ -f "$mount/$p3" ]]; then

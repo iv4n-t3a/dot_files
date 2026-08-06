@@ -64,12 +64,12 @@ focus_follows_mouse yes
 
     bindsym --to-code $mod+Shift+f exec $termrun vifm
     bindsym --to-code $mod+Shift+n exec $termrun newsboat
-    bindsym --to-code $mod+Shift+m exec $termrun musikcube
+    bindsym --to-code $mod+Shift+m exec $termrun mocp -C ~/.moc/config.in
     bindsym --to-code $mod+Shift+w exec connman-gtk
     bindsym --to-code $mod+Shift+i exec $termrun irssi
     bindsym --to-code $mod+Shift+r exec $termrun htop
     bindsym --to-code $mod+Shift+p exec $termrun pypy3
-    bindsym --to-code $mod+Shift+b exec firefox
+    bindsym --to-code $mod+Shift+b exec flatpak run app.zen_browser.zen
     bindsym --to-code $mod+Shift+t exec flatpak run org.telegram.desktop
 
     bindsym --to-code $mod+Shift+s exec flameshot gui

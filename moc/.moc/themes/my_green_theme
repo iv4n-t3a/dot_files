@@ -3,7 +3,7 @@
 colordef black = 70 70 70
 colordef grey = 150 150 150
 colordef cyan = 1000 1000 1000
-colordef green = 500 750 1000
+colordef green = 500 1000 550
 
 background           = black     black
 frame                = green     black
