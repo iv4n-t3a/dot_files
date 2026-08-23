@@ -35,6 +35,7 @@ PACKAGES=(
     ansible
     python3
     pipx
+    gopls
 
     # python system-wide libs
     python3-matplotlib
