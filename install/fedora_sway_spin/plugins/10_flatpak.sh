@@ -8,6 +8,7 @@ PACKAGES=(
     com.usebruno.Bruno
     org.kde.krita
     org.libreoffice.LibreOffice
+    app.zen_browser.zen
 )
 
 flatpak install -y "${PACKAGES[@]}"
