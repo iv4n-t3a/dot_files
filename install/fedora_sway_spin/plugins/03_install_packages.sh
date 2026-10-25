@@ -37,6 +37,13 @@ PACKAGES=(
     pipx
     gopls
 
+    # hackerman
+    arp-scan
+    nmap
+    tcpdump
+    wireshark
+    hashcat pocl clinfo intel-compute-runtime
+
     # python system-wide libs
     python3-matplotlib
     python3-numpy
